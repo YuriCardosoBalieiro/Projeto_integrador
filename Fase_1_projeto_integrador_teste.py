@@ -67,7 +67,7 @@ MLL=((RB)-(OC))
 
 
 #Criando a tabela
-df=pd.DataFrame({"Descrição":["Peco de venda","Custo de aquisicao(fornecedor)",
+df=pd.DataFrame({"Descrição":["Preco de venda","Custo de aquisicao(fornecedor)",
 "Receita bruta (A-B)","Custo fixo/Administrativo","Comissao de vendas","Impostos","Outros custos (D + E + F)",
 "Rentabilidade", ],
                 "Valor":[PV,CP,RB,CFF,CVV,IVV,OC,MLL],
@@ -76,13 +76,15 @@ df=pd.DataFrame({"Descrição":["Peco de venda","Custo de aquisicao(fornecedor)"
 print(df)
 
 #Definindo Rentabilidade
-if ML > 20:
+if ML > 20 and ML < 100:
     print("\nO produto se encontra na faixa de lucro ALTO.")
-elif ML > 10 or ML < 20:
+elif ML > 10 and ML < 20:
     print("\nO produto se encontra na faixa de lucro MÉDIO.")
-elif ML > 0 or ML < 10:
+elif ML > 0 and ML < 10:
     print("\nO produto se encontra na faixa de lucro BAIXO.")
 elif ML == 0:
     print("\nO produto se encontra em EQUILÍBRIO.")
-else:
+elif ML < 0:
     print("\nO produto se encontra em PREJUÍZO.")
+elif ML > 100:
+     print("\nErro.")
